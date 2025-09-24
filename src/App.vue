@@ -1,7 +1,10 @@
 <template>
   <div>
-    <NavigationBar theme="wireframe" />
-    <main data-theme="wireframe" class="h-screen p-3">
+    <NavigationBar />
+    <main
+      data-theme="wireframe"
+      class="h-full p-3 bg-gradient-to-b from-gray-900 via-gray-800 to-black"
+    >
       <RouterView />
     </main>
   </div>
