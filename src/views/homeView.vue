@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="z-10">
     <div
-      class="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-center"
+      class="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-center h-full lg:h-screen"
     >
       <div class="flex flex-col items-center md:items-end space-y-6">
         <CardComponents :image="topDeck" title="Top Deck" @click="goToDeck" />
