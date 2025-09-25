@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="navbar-center lg:right-28 relative">
+    <div class="navbar-center lg:right-28 relative" @click="goHome">
       <img :src="Logo" alt="logo" class="w-40 lg:w-56" />
     </div>
   </div>
@@ -68,6 +68,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import Logo from "@/assets/yugio-logo.png";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const isOpen = ref(false);
 const menuWrapper = ref<HTMLElement | null>(null);
@@ -105,6 +108,10 @@ defineProps({
     default: "light",
   },
 });
+
+const goHome = () => {
+  router.push("/");
+};
 </script>
 
 <style scoped>

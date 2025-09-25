@@ -10,5 +10,15 @@ export interface TopPlayers {
   draw: number;
   lose: number;
   point: number;
-  avatarUrl: string | null;
+  avatarUrl: string | null; 
+}
+
+export interface TopDecks {
+  id: number;
+  name: string;
+  win: number;
+  lose: number;
+  draw: number;
+  point: number;
+  imageUrl: string | null;
 }
