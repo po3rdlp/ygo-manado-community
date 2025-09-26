@@ -13,12 +13,19 @@ export interface TopPlayers {
   avatarUrl: string | null; 
 }
 
-export interface TopDecks {
+export interface TopDeckTierList {
   id: number;
   name: string;
+  participation: number;
+  topping: number;
+  gold: number;
+  silver: number;
+  bronze: number;
   win: number;
-  lose: number;
   draw: number;
+  lose: number;
   point: number;
   imageUrl: string | null;
+  winrate: number;   
+  tier: string;    
 }

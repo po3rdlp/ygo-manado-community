@@ -59,7 +59,10 @@
       </div>
     </div>
 
-    <div class="navbar-center lg:right-28 relative" @click="goHome">
+    <div
+      class="navbar-center lg:right-28 relative cursor-pointer"
+      @click="goHome"
+    >
       <img :src="Logo" alt="logo" class="w-40 lg:w-56" />
     </div>
   </div>
