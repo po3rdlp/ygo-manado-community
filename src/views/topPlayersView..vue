@@ -3,8 +3,13 @@
     <div class="p-3">
       <h1 class="text-xl font-bold mb-4 text-cyan-400">Top 3 Player :</h1>
 
-      <div v-if="isLoading" class="text-white">Loading...</div>
-      <div v-else-if="error" class="text-red-400">{{ error }}</div>
+      <div v-if="isLoading" class="text-white"><loadingComponents /></div>
+      <div
+        v-else-if="error"
+        class="bg-red-500/20 border border-red-400/50 text-red-300 px-3 py-2 rounded text-sm"
+      >
+        {{ error }}
+      </div>
       <div v-else>
         <TableComponents
           :data="dataTopPlayers3"
@@ -16,8 +21,13 @@
     <div class="p-3">
       <h1 class="text-xl font-bold mb-4 text-purple-400">Player :</h1>
 
-      <div v-if="isLoading" class="text-white">Loading...</div>
-      <div v-else-if="error" class="text-red-400">{{ error }}</div>
+      <div v-if="isLoading" class="text-white"><loadingComponents /></div>
+      <div
+        v-else-if="error"
+        class="bg-red-500/20 border border-red-400/50 text-red-300 px-3 py-2 rounded text-sm"
+      >
+        {{ error }}
+      </div>
       <div v-else>
         <TableComponents
           :data="dataTopPlayers"
@@ -31,11 +41,14 @@
 
 <script setup lang="ts">
 import { ref, onMounted, h } from "vue";
+import { useRouter } from "vue-router";
 import { api } from "@/services/api.config";
 import TableComponents from "@/components/tableComponents.vue";
 import { createColumnHelper, type ColumnDef } from "@tanstack/vue-table";
+import loadingComponents from "@/components/loadingComponents.vue";
 
 import { TopPlayers } from "@/types/data.types";
+const router = useRouter();
 
 const dataTopPlayers = ref<TopPlayers[]>([]);
 const dataTopPlayers3 = ref<TopPlayers[]>([]);
@@ -54,7 +67,14 @@ const columns: ColumnDef<TopPlayers, any>[] = [
     cell: (info) =>
       h(
         "span",
-        { class: "text-purple-400 font-bold text-lg hover:cursor-pointer" },
+        {
+          class:
+            "text-purple-400 font-bold text-lg hover:cursor-pointer hover:underline",
+          onClick: () => {
+            const id = info.row.original.id;
+            router.push(`/player/${id}/history-match`);
+          },
+        },
         info.getValue()
       ),
   }),

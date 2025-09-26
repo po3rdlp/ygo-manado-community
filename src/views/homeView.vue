@@ -41,7 +41,7 @@ import matchesImg from "@/assets/draco_yugio_matches.jpg";
 const router = useRouter();
 
 const goToDeck = () => {
-  router.push("/tournaments");
+  router.push("/top-deck");
 };
 const goToTopPlayer = () => {
   router.push("/top-players");
