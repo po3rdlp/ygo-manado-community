@@ -1,39 +1,43 @@
 <template>
   <div class="h-full">
-    <div class="p-3">
-      <h1 class="text-xl font-bold mb-4 text-cyan-400">Top 3 Player :</h1>
-
-      <div v-if="isLoading" class="text-white"><loadingComponents /></div>
-      <div
-        v-else-if="error"
-        class="bg-red-500/20 border border-red-400/50 text-red-300 px-3 py-2 rounded text-sm"
-      >
-        {{ error }}
-      </div>
-      <div v-else>
-        <TableComponents
-          :data="dataTopPlayers3"
-          :columns="columns"
-          :show-search="false"
-        />
-      </div>
+    <div v-if="isLoading" class="text-white p-3">
+      <loadingComponents />
     </div>
-    <div class="p-3">
-      <h1 class="text-xl font-bold mb-4 text-purple-400">Player :</h1>
+    <div v-else>
+      <div class="p-3">
+        <h1 class="text-xl font-bold mb-4 text-cyan-400">Top 3 Player :</h1>
 
-      <div v-if="isLoading" class="text-white"><loadingComponents /></div>
-      <div
-        v-else-if="error"
-        class="bg-red-500/20 border border-red-400/50 text-red-300 px-3 py-2 rounded text-sm"
-      >
-        {{ error }}
+        <div
+          v-if="error"
+          class="bg-red-500/20 border border-red-400/50 text-red-300 px-3 py-2 rounded text-sm"
+        >
+          {{ error }}
+        </div>
+        <div v-else>
+          <TableComponents
+            :data="dataTopPlayers3"
+            :columns="columns"
+            :show-search="false"
+          />
+        </div>
       </div>
-      <div v-else>
-        <TableComponents
-          :data="dataTopPlayers"
-          :columns="columns"
-          :show-search="true"
-        />
+
+      <div class="p-3">
+        <h1 class="text-xl font-bold mb-4 text-purple-400">Player :</h1>
+
+        <div
+          v-if="error"
+          class="bg-red-500/20 border border-red-400/50 text-red-300 px-3 py-2 rounded text-sm"
+        >
+          {{ error }}
+        </div>
+        <div v-else>
+          <TableComponents
+            :data="dataTopPlayers"
+            :columns="columns"
+            :show-search="true"
+          />
+        </div>
       </div>
     </div>
   </div>

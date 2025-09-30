@@ -1,7 +1,6 @@
 <template>
-  <div class="p-4">
-    \
-    <h2 class="text-lg font-bold text-gray-200 mb-4">Top Decks :</h2>
+  <div class="p-2">
+    <h2 class="text-lg font-bold text-gray-200">Top Decks :</h2>
     <div v-if="isLoading" class="flex justify-center items-center py-8">
       <loadingComponents />
     </div>
@@ -13,7 +12,7 @@
       <p>{{ error }}</p>
     </div>
 
-    <div v-else class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+    <div v-else class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
       <div
         v-for="deck in dataTopDecks"
         :key="deck.id"
@@ -24,7 +23,10 @@
       >
         <div class="absolute inset-0 bg-black/80 rounded-lg"></div>
 
-        <div class="relative flex flex-col justify-between h-full text-white">
+        <div
+          class="relative flex flex-col justify-between h-full text-white cursor-pointer"
+          @click="route.push(`/deck/${deck.id}`)"
+        >
           <div class="flex justify-between items-start mb-2">
             <div class="flex flex-col space-y-1">
               <div>
@@ -46,7 +48,7 @@
                 :src="deck.imageUrl"
                 :alt="deck.name"
                 class="w-12 h-12 rounded-lg border-2 border-white/30 object-cover"
-                @click="openModal(deck.imageUrl)"
+                @click.stop="openModal(deck.imageUrl)"
               />
             </div>
           </div>
@@ -74,6 +76,9 @@ import { api } from "@/services/api.config";
 import { TopDeckTierList } from "@/types/data.types";
 import loadingComponents from "@/components/loadingComponents.vue";
 import imageViewComponents from "@/components/imageViewComponents.vue";
+import { useRouter } from "vue-router";
+
+const route = useRouter();
 
 const dataTopDecks = ref<TopDeckTierList[]>([]);
 const isLoading = ref<boolean>(true);

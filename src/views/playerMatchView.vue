@@ -3,9 +3,12 @@
     <div v-if="isLoading" class="text-center">Loading...</div>
     <div v-else-if="error" class="text-center text-red-400">{{ error }}</div>
     <div v-else-if="playerData">
-      <div class="mb-6 bg-gray-800 p-4 rounded-lg shadow">
+      <div class="mb-6p-4 rounded-lg shadow">
         <h2 class="text-xl font-bold mb-4">{{ playerData.duelist.name }}</h2>
-        <div class="grid grid-cols-2 gap-2 text-sm">
+
+        <div
+          class="grid grid-cols-2 gap-2 text-sm border border-gray-600 rounded-lg p-3 bg-gray-900/50"
+        >
           <p>
             <span class="font-semibold">ID:</span> {{ playerData.duelist.id }}
           </p>
@@ -46,6 +49,7 @@
           </p>
         </div>
       </div>
+
       <div>
         <h3 class="text-lg font-semibold mb-3">Match History</h3>
         <div
@@ -66,7 +70,7 @@
               d="M12 8v4m0 4h.01M12 2a10 10 0 1010 10A10 10 0 0012 2z"
             />
           </svg>
-          <span class="font-semibold">Belum ada match untuk player ini.</span>
+          <span class="font-semibold">No match for this player.</span>
         </div>
 
         <div v-else class="overflow-x-auto">

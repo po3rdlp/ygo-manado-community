@@ -13,6 +13,36 @@ export interface TopPlayers {
   avatarUrl: string | null; 
 }
 
+// Deck
+
+export interface Deck {
+  id: number;
+  name: string;
+  participation: number;
+  topping: number;
+  gold: number;
+  silver: number;
+  bronze: number;
+  win: number;
+  draw: number;
+  lose: number;
+  point: number;
+  imageUrl?: string;
+}
+
+
+export interface DeckMatchHistory {
+  matchId: number;
+  player1Name: string;
+  player2Name: string;
+  player1DeckName: string;
+  player2DeckName: string;
+  player1Score: number;
+  player2Score: number;
+  round: string;
+}
+
+
 export interface TopDeckTierList {
   id: number;
   name: string;
